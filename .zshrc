@@ -18,7 +18,8 @@ export EDITOR=vim
 #ZSH_THEME="mrtazz"
 #ZSH_THEME="evan"
 #ZSH_THEME="cypher"
-ZSH_THEME="miloshadzic"
+#ZSH_THEME="miloshadzic"
+ZSH_THEME="simpalt"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -71,6 +72,8 @@ ZSH_THEME="miloshadzic"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  kubectl
+  zsh-z
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -105,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 alias ls='ls++ -la'
+alias metamorph_pkg_local="cd ~/mar-service-metamorph/testing/local/.composer_mar-server"
 
 
 PATH="/home/appsadm/perl5/bin${PATH:+:${PATH}}"; export PATH;
@@ -112,3 +116,10 @@ PERL5LIB="/home/appsadm/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5L
 PERL_LOCAL_LIB_ROOT="/home/appsadm/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
 PERL_MB_OPT="--install_base \"/home/appsadm/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/home/appsadm/perl5"; export PERL_MM_OPT;
+
+_kube_pod_ssh() { kubectl exec -ti $1 bash }
+_kube_pod_run() { kubectl exec -ti "$1" "${@:2}" }
+prompt_context(){}
+
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
